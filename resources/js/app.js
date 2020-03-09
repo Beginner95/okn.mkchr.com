@@ -30,3 +30,16 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+
+$('#complex_exist').on('click', function () {
+    $('.complex-block').toggleClass('enable-complex', 'disable-complex');
+});
+
+$('input.typeahead').typeahead({
+    source:  function (query, process) {
+        return $.get('autocomplete', {query:query}, function (data) {
+            return process(data);
+        });
+    }
+});
