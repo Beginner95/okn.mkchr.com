@@ -28,6 +28,7 @@ class CrateComplexTable extends Migration
             $table->string('state')->nullable();
             $table->string('status')->nullable();
             $table->text('comment')->nullable();
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }
