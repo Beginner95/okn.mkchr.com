@@ -16,17 +16,18 @@ class CrateComplexTable extends Migration
         Schema::create('complex', function (Blueprint $table) {
             $table->id();
             $table->text('name');
-            $table->text('name_chr')->nullable;
-            $table->string('date_okn')->nullable;
-            $table->text('address')->nullable;
-            $table->text('act')->nullable;
-            $table->string('category')->nullable;
-            $table->string('owner')->nullable;
-            $table->string('latitude')->nullable;
-            $table->string('longitude')->nullable;
-            $table->string('state')->nullable;
-            $table->string('status')->nullable;
-            $table->text('comment')->nullable;
+            $table->text('name_chr')->nullable();
+            $table->string('date_okn')->nullable();
+            $table->bigInteger('district_id')->nullable();
+            $table->text('address')->nullable();
+            $table->text('act')->nullable();
+            $table->string('category')->nullable();
+            $table->string('owner')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('state')->nullable();
+            $table->string('status')->nullable();
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }
