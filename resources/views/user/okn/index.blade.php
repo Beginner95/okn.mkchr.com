@@ -49,13 +49,25 @@
                                         <td width="30" scope="row">{{ $i++ }}</td>
                                         <td width="150">{{ $object->name }}</td>
                                         <td width="150">{{ $object->name_chr }}</td>
-                                        <td width="150">{{ $object->complex_id }}</td>
-                                        <td width="150">{{ $object->complex_id }}</td>
+                                        <td width="150">{{ $object->complex['name'] }}</td>
+                                        <td width="150">{{ $object->complex['name_chr'] }}</td>
                                         <td>{{ $object->date_okn }}</td>
-                                        <td>{{ $object->district_id }} {{ $object->address }}</td>
+                                        <td>{{ $object->district['name'] }} {{ $object->address }}</td>
                                         <td>{{ $object->act }}</td>
-                                        <td>{{ $object->category }}</td>
-                                        <td>{{ $object->owner }}</td>
+                                        <td>
+                                            @if ($object->category === '0')
+                                                РЗ
+                                            @else
+                                                ФЗ
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($object->owner === '0')
+                                                РЗ
+                                            @else
+                                                ФЗ
+                                            @endif
+                                        </td>
                                         <td>{{ $object->latitude }}</td>
                                         <td>{{ $object->longitude }}</td>
                                         <td>{{ $object->sum_npd }}</td>
@@ -63,8 +75,20 @@
                                         <td>{{ \Carbon\Carbon::parse($object->end_job)->format('d.m.Y') }}</td>
                                         <td>{{ $object->finance }}</td>
                                         <td>{{ $object->npd }}</td>
-                                        <td>{{ $object->state }}</td>
-                                        <td>{{ $object->status }}</td>
+                                        <td>
+                                            @if ($object->state === '0')
+                                                Неудовлетворительное
+                                            @else
+                                                Удовлетворительное
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($object->status === '0')
+                                                Выявлен
+                                            @else
+                                                Зарегистрирован
+                                            @endif
+                                        </td>
                                         <td>{{ $object->comment }}</td>
                                         <td>
                                             @if (!empty($object->file))
