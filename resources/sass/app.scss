@@ -15,3 +15,32 @@
 .enable-complex {
     display: block;
 }
+
+.main-container {
+    width: 98%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.main-container .table {
+    font-size: 0.7rem;
+}
+
+.main-container .table th, .table td {
+    padding: 0.6rem;
+}
+
+.main-container .card-body {
+    padding: 0.5rem;
+}
+
+.main-container .table thead th, .main-container .table tbody td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.add-weight {
+    font-weight: bold;
+    float: right;
+    padding: 0 7px;
+}
