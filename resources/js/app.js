@@ -20,7 +20,7 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
+Vue.component('autocomplete-complex', require('./components/AutocomplateComplex.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -29,17 +29,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
-});
-
-
-$('#complex_exist').on('click', function () {
-    $('.complex-block').toggleClass('enable-complex', 'disable-complex');
-});
-
-$('input.typeahead').typeahead({
-    source:  function (query, process) {
-        return $.get('autocomplete', {query:query}, function (data) {
-            return process(data);
-        });
+    data: {
+        isVisible: false
     }
 });
