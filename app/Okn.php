@@ -13,4 +13,8 @@ class Okn extends Model
         return $this->belongsTo(Complex::class);
     }
 
+    public function district()
+    {
+        return $this->belongsTo(District::class);
+    }
 }
