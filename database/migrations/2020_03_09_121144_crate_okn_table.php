@@ -31,10 +31,11 @@ class CrateOknTable extends Migration
             $table->dateTime('end_job')->nullable();
             $table->text('finance')->nullable();
             $table->text('npd')->nullable();
-            $table->string('state')->nullable();
-            $table->string('status')->nullable();
+            $table->char('state', 1)->nullable();
+            $table->char('status', 1)->nullable();
             $table->text('comment')->nullable();
             $table->string('file')->nullable();
+            $table->char('isComplex', 1)->nullable();
             $table->timestamps();
         });
     }
