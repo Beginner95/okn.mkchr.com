@@ -10,11 +10,16 @@ class Okn extends Model
 
     public function complex()
     {
-        return $this->belongsTo(Complex::class);
+        return $this->belongsTo(self::class);
     }
 
     public function district()
     {
         return $this->belongsTo(District::class);
+    }
+
+    public function getFindByName($name)
+    {
+        return self::where('name', $name)->first();
     }
 }
