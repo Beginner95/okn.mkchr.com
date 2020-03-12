@@ -46,8 +46,8 @@
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Объект ОКН</a>
                                 <div class="dropdown-menu dropdown-menu-left">
-                                    <a href="{{ route('index') }}" class="dropdown-item">Список объектов ОКН</a>
-                                    <a href="{{ route('create') }}" class="dropdown-item">Добавить объект ОКН</a>
+                                    <a href="{{ route('object.index') }}" class="dropdown-item">Список объектов ОКН</a>
+                                    <a href="{{ route('object.create') }}" class="dropdown-item">Добавить объект ОКН</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">

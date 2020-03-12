@@ -13,7 +13,7 @@
                         @endif
                     </div>
                     <div class="card-body">
-                        <form action="/" method="post" enctype="multipart/form-data">
+                        <form action="/object" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <div class="row">
