@@ -44,6 +44,21 @@
                            
                         @else
                             <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Объект ОКН</a>
+                                <div class="dropdown-menu dropdown-menu-left">
+                                    <a href="{{ route('index') }}" class="dropdown-item">Список объектов ОКН</a>
+                                    <a href="{{ route('create') }}" class="dropdown-item">Добавить объект ОКН</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Комплекс объектов ОКН</a>
+                                <div class="dropdown-menu dropdown-menu-left">
+                                    <a href="{{ route('complex.index') }}" class="dropdown-item">Список комплексов</a>
+                                    <a href="{{ route('complex.create') }}" class="dropdown-item">Добавить комплекс</a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
