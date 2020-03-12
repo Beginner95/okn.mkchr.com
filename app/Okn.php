@@ -13,6 +13,12 @@ class Okn extends Model
         return $this->belongsTo(self::class);
     }
 
+    public function getCountObjectInComplex($id)
+    {
+        $objects = self::where('complex_id', $id)->get();
+        return $objects->count();
+    }
+
     public function district()
     {
         return $this->belongsTo(District::class);

@@ -50,8 +50,34 @@
                                         <td width="30" scope="row">{{ $i++ }}</td>
                                         <td width="150">{{ $object->name }}</td>
                                         <td width="150">{{ $object->name_chr }}</td>
-                                        <td width="150">{{ $object->complex['name'] }}</td>
-                                        <td width="150">{{ $object->complex['name_chr'] }}</td>
+                                        <td width="150">
+                                            @if (empty($object->complex['name']))
+                                                @if (!empty($object->isComplex))
+                                                    {{ $object->name }}
+                                                    @if ($object->getCountInjectOnComplex($object->id) > 0)
+                                                        ({{ $object->getCountObjectInComplex($object->id) }} ОКН)
+                                                    @endif
+                                                @else
+                                                    Не входит в комплекс (ансамбль)
+                                                @endif
+                                            @else
+                                                {{ $object->complex['name'] }}
+                                            @endif
+                                        </td>
+                                        <td width="150">
+                                            @if (empty($object->complex['name_chr']))
+                                                @if (!empty($object->isComplex))
+                                                    {{ $object->name }}
+                                                    @if ($object->getCountObjectInComplex($object->id) > 0)
+                                                        ({{ $object->getCountObjectInComplex($object->id) }} ОКН)
+                                                    @endif
+                                                @else
+                                                    Не входит в комплекс (ансамбль)
+                                                @endif
+                                            @else
+                                                {{ $object->complex['name_chr'] }}
+                                            @endif
+                                        </td>
                                         <td>{{ $object->date_okn }}</td>
                                         <td>{{ $object->district['name'] }} {{ $object->address }}</td>
                                         <td>{{ $object->act }}</td>
