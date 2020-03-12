@@ -32,5 +32,16 @@ const app = new Vue({
     el: '#app',
     data: {
         isVisible: false
+    },
+
+    methods: {
+        deleteObject(id) {
+            axios.delete('object/' + id)
+                .then(response => {
+                    if (response.data === 'ok') {
+                        window.location.href = '/';
+                    }
+                });
+        }
     }
 });

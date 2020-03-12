@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">
                         Список объектов 
-                        <a href="{{ route('create') }}" class="btn btn-primary add-weight" title="Добавить объект">
+                        <a href="{{ route('object.create') }}" class="btn btn-primary add-weight" title="Добавить объект">
                             <span>+</span>
                         </a>
                     </div>
@@ -40,6 +40,7 @@
                                         <th scope="col">Статус (Зарегистрирован/выявлен)</th>
                                         <th scope="col">Примечание</th>
                                         <th scope="col">Файл</th>
+                                        <th scope="col">Действие</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -94,6 +95,16 @@
                                             @if (!empty($object->file))
                                                 <a href="{{ '/files/' . $object->file }}">Скачать</a>
                                             @endif
+                                        </td>
+                                        <td>
+
+                                            <span
+                                                style="cursor: pointer"
+                                                title="Удалить"
+                                                v-on:click="deleteObject({{ $object->id }})"
+                                                onclick="return confirm('Удалить объект ОКН?');">
+                                                <img src="/images/garbage.svg" width="15px">
+                                            </span>
                                         </td>
                                     </tr>
                                 @endforeach

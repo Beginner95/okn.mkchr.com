@@ -120,7 +120,13 @@ class IndexController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $okn = Okn::where('id', $id)->first();
+        $this->deleteFile($okn->file);
+        $statusDelete = $okn->delete();
+        if ($statusDelete === true) {
+            return response()->json('ok');
+        }
+        return response()->json('error');
     }
 
     public function getComplexId($complexName)
@@ -149,5 +155,11 @@ class IndexController extends Controller
     {
         $fileObj = new UploadFile();
         return $fileObj->uploadFile($file);
+    }
+
+    public function deleteFile($file)
+    {
+        $fileObj = new UploadFile();
+        $fileObj->deleteCurrentFile($file);
     }
 }
