@@ -74,6 +74,11 @@ class IndexController extends Controller
         $okn->status = $request['status'];
         $okn->comment = $request['comment'];
         $okn->file = $file;
+
+        if (!empty($request['is-complex'])) {
+            $okn->isComplex = 1;
+        }
+
         $okn->save();
         return redirect('/');
     }

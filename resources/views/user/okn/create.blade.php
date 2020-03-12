@@ -63,6 +63,8 @@
                                 <label for="">Выберите комплекс</label>
                                 <autocomplete-complex></autocomplete-complex>
                             </div>
+                            @else
+                                <input type="hidden" name="is-complex" value="1">
                             @endif
 
                             <div class="form-group">
