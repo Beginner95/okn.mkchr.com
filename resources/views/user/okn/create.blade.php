@@ -5,14 +5,26 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card block-weight">
-                    <div class="card-header">Добавление нового объекта</div>
+                    <div class="card-header">
+                        @if (!Request::is('complex/create'))
+                            Добавление нового объекта
+                        @else
+                            Добавление нового комплекса (асамблея)
+                        @endif
+                    </div>
                     <div class="card-body">
                         <form action="/" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col">
-                                        <label for="">Наименование ОКН</label>
+                                        <label for="">
+                                            @if (!Request::is('complex/create'))
+                                                Наименование ОКН
+                                            @else
+                                                Наименование (асамблея)
+                                            @endif
+                                        </label>
                                         <textarea
                                             name="okn-name"
                                             class="form-control"
@@ -21,7 +33,13 @@
                                         </textarea>
                                     </div>
                                     <div class="col">
-                                        <label for="">Наименование ОКН на чеченском языке</label>
+                                        <label for="">
+                                            @if (!Request::is('complex/create'))
+                                                Наименование ОКН на чеченском языке
+                                            @else
+                                                Наименование комплекса (асамблея) на чеченском языке
+                                            @endif
+                                        </label>
                                         <textarea
                                             name="okn-name-chr"
                                             class="form-control"
@@ -30,7 +48,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            @if (!Request::is('complex/create'))
                             <div class="form-group">
                                 <label for="complex_exist">Входит в состав ансамбля</label>
                                 <input
@@ -45,11 +63,18 @@
                                 <label for="">Выберите комплекс</label>
                                 <autocomplete-complex></autocomplete-complex>
                             </div>
+                            @endif
 
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col">
-                                        <label for="origin">Датировка ОКН</label>
+                                        <label for="origin">
+                                            @if (!Request::is('complex/create'))
+                                                Датировка ОКН
+                                            @else
+                                                Датировка ОКН комплекса (асамблея)
+                                            @endif
+                                        </label>
                                         <input type="text" name="date-okn" class="form-control" title="Датировка ОКН">
                                     </div>
                                     <div class="col">
@@ -112,7 +137,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            @if (!Request::is('complex/create'))
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col">
@@ -141,7 +166,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col">
@@ -161,7 +185,13 @@
                                             title="Наличие научно-проектной документации">
                                     </div>
                                     <div class="col">
-                                        <label for="">Состояние ОКН</label>
+                                        <label for="">
+                                            @if (!Request::is('complex/create'))
+                                                Состояние ОКН
+                                            @else
+                                                Состояние комплекса (асамблея)
+                                            @endif
+                                        </label>
                                         <select name="state" id="" class="form-control" title="Состояние ОКН">
                                             <option value="0">Неудовлетворительное</option>
                                             <option value="1">Удовлетворительное</option>
@@ -177,7 +207,7 @@
                                     <option value="1">Зарегистрирован</option>
                                 </select>
                             </div>
-
+                            @endif
                             <div class="form-group">
                                 <label for="">Примечание</label>
                                 <textarea name="comment" class="form-control"></textarea>

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Complex;
 use App\District;
 use App\Http\UploadFile;
 use Illuminate\Http\Request;
@@ -127,7 +126,7 @@ class IndexController extends Controller
     public function getComplexId($complexName)
     {
         if (!empty($complexName)) {
-            $complex = new Complex();
+            $complex = new Okn();
             $complex = $complex->getFindByName($complexName)->id;
         } else {
             $complex = null;
