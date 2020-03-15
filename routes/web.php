@@ -12,8 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::resource('/', 'IndexController');
+Route::get('/', 'IndexController@index');
+Route::post('/object-update/{id}', 'IndexController@update');
+Route::resource('object', 'IndexController');
+Route::get('/autocomplete-complex', 'ComplexController@autocompleteComplex');
+Route::resource('complex', 'ComplexController');
+Route::get('/autocomplete-district', 'DistrictController@autocompleteDistrict');
+Route::resource('district', 'DistrictController');
 
 Route::group(['namespace' => 'Auth'], function() {
     Route::get('login', 'LoginController@showLoginForm')->name('login');
