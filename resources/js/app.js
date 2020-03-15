@@ -31,7 +31,8 @@ Vue.component('autocomplete-district', require('./components/AutocomplateDistric
 const app = new Vue({
     el: '#app',
     data: {
-        isVisible: false
+        isVisible: false,
+        isVisibleFile: false
     },
 
     methods: {
@@ -45,3 +46,8 @@ const app = new Vue({
         }
     }
 });
+
+let complexName = $('#complexName').attr('data-complex-name');
+if (complexName !== 'undefined') {
+    $('input[name="complex"]').val(complexName);
+}

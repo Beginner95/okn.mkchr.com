@@ -54,7 +54,7 @@
                                             @if (empty($object->complex['name']))
                                                 @if (!empty($object->isComplex))
                                                     {{ $object->name }}
-                                                    @if ($object->getCountInjectOnComplex($object->id) > 0)
+                                                    @if ($object->getCountObjectInComplex($object->id) > 0)
                                                         ({{ $object->getCountObjectInComplex($object->id) }} ОКН)
                                                     @endif
                                                 @else
@@ -123,7 +123,11 @@
                                             @endif
                                         </td>
                                         <td>
-
+                                            <a
+                                                href="object/{{ $object->id}}/edit"
+                                                title="Редактировать">
+                                                <img src="/images/pencil.svg" width="15px">
+                                            </a>
                                             <span
                                                 style="cursor: pointer"
                                                 title="Удалить"

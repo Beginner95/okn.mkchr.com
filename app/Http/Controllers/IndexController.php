@@ -102,7 +102,11 @@ class IndexController extends Controller
      */
     public function edit($id)
     {
-        //
+        $okn = Okn::where('id', $id)->first();
+        if (!empty($okn->isComplex)) {
+            return redirect('/complex/' . $id . '/edit');
+        }
+        return view('user.okn.edit', compact('okn'));
     }
 
     /**
@@ -114,7 +118,44 @@ class IndexController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $okn = Okn::where('id', $id)->first();
+        $complex_id = $this->getComplexId($request['complex']);
+        $district_id = $this->getDistrictId($request['district']);
+
+        $file = null;
+        if (!empty($request->file)) {
+            $file = $this->getFileName($request->file);
+        } else {
+            $this->deleteFile($okn->file);
+        }
+
+        $okn->name = $request['okn-name'];
+        $okn->name_chr = $request['okn-name-chr'];
+        $okn->complex_id = $complex_id;
+        $okn->date_okn = $request['date-okn'];
+        $okn->act = $request['act'];
+        $okn->district_id = $district_id;
+        $okn->address = $request['address'];
+        $okn->category = $request['category'];
+        $okn->owner = $request['owner'];
+        $okn->latitude = $request['latitude'];
+        $okn->longitude = $request['longitude'];
+        $okn->sum_npd = $request['sum-npd'];
+        $okn->start_job = $request['start-job'];
+        $okn->end_job = $request['end-job'];
+        $okn->finance = $request['finance'];
+        $okn->npd = $request['npd'];
+        $okn->state = $request['state'];
+        $okn->status = $request['status'];
+        $okn->comment = $request['comment'];
+        $okn->file = $file;
+
+        if (!empty($request['is-complex'])) {
+            $okn->isComplex = 1;
+        }
+
+        $okn->save();
+        return redirect('/');
     }
 
     /**

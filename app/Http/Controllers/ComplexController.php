@@ -12,6 +12,12 @@ class ComplexController extends Controller
         return view('user.okn.create');
     }
 
+    public function edit($id)
+    {
+        $okn = Okn::where('id', $id)->first();
+        return view('user.okn.edit', compact('okn'));
+    }
+
     public function autocompleteComplex(Request $request)
     {
         $searchquery = $request->queryString;
