@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class ComplexController extends Controller
 {
+    public function index(Request $request)
+    {
+        $limit = $request['limit'];
+        $objects = Okn::where('isComplex', '!=', null)->paginate($limit);
+        $limits = [2, 10, 20, 30, 40, 50];
+        return view('user.okn.index', compact('objects', 'limits'));
+    }
+
     public function create()
     {
         return view('user.okn.create');
