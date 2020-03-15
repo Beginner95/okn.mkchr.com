@@ -19,11 +19,13 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $objects = Okn::paginate(30);
+        $limit = $request['limit'];
+        $objects = Okn::paginate($limit);
+        $limits = [20, 30, 40, 50];
 
-        return view('user.okn.index', compact('objects'));
+        return view('user.okn.index', compact('objects', 'limits'));
     }
 
     /**

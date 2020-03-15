@@ -6,6 +6,75 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
+                        Фильтр
+                    </div>
+                    <div class="card-body">
+                        <form action="/" method="get">
+                        <span style="display: none">{{ csrf_token() }}</span>
+                        <table class="table table-bordered" cellspacing="0">
+                            <tr>
+                                <th>Категория историко-культурного значения</th>
+                                <th>Собственность ОКН (ФС/РС)</th>
+                                <th>Состояние ОКН</th>
+                                <th>Статус (Зарегистрирован/выявлен)</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select name="category" id="" class="form-control" title="Категория историко-культурного значения">
+                                        <option value="0">Республиканского значения</option>
+                                        <option value="1">Федерального значения</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="owner" id="" class="form-control" title="Собственность ОКН (ФС/РС)">
+                                        <option value="0">Республиканского значения</option>
+                                        <option value="1">Федерального значения</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="state" id="" class="form-control" title="Состояние ОКН">
+                                        <option value="0">Неудовлетворительное</option>
+                                        <option value="1">Удовлетворительное</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="status" id="" class="form-control" title="Статус (Зарегистрирован/выявлен)">
+                                        <option value="0">Выявлен</option>
+                                        <option value="1">Зарегистрирован</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                            <div class="row">
+                                <div class="col-sm-1">
+                                    <select
+                                        name="limit"
+                                        class="form-control"
+                                        title="Выберите количество на страницу">
+                                        @foreach($limits as $limit)
+                                            <option
+                                                value="{{ $limit }}"
+                                                @if (Request::get('limit') == $limit)
+                                                    selected
+                                                @endif>{{ $limit }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-sm-11 text-right">
+                                    <button class="btn btn-primary pull-right">Отфильтровать</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
                         Список объектов 
                         <a href="{{ route('object.create') }}" class="btn btn-primary add-weight" title="Добавить объект">
                             <span>+</span>
