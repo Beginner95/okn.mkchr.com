@@ -124,11 +124,13 @@ class IndexController extends Controller
         $complex_id = $this->getComplexId($request['complex']);
         $district_id = $this->getDistrictId($request['district']);
 
-        $file = null;
         if (!empty($request->file)) {
-            $file = $this->getFileName($request->file);
+            $okn->file = $this->getFileName($request->file);
         } else {
-            $this->deleteFile($okn->file);
+            if (empty($request['file-name'])) {
+                $this->deleteFile($okn->file);
+                $okn->file = null;
+            }
         }
 
         $okn->name = $request['okn-name'];
@@ -150,7 +152,6 @@ class IndexController extends Controller
         $okn->state = $request['state'];
         $okn->status = $request['status'];
         $okn->comment = $request['comment'];
-        $okn->file = $file;
 
         if (!empty($request['is-complex'])) {
             $okn->isComplex = 1;

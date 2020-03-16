@@ -251,14 +251,22 @@
                             </div>
                             <div class="form-group">
                             @if (!empty($okn->file))
+                                <input type="hidden" value="{{ $okn->file }}" id="fileName" name="file-name">
                                 <a href="{{ '/files/' . $okn->file }}" class="btn btn-dark" v-if="!isVisibleFile">Скачать файл</a>
                                 <a
+                                    id="deleteFile"
                                     v-if="!isVisibleFile"
                                     href="#"
                                     class="btn btn-danger"
                                     @click="isVisibleFile = !isVisibleFile">
                                     Удалить файл
                                 </a>
+                            @else
+                                <a
+                                    href="#"
+                                    v-if="!isVisibleFile"
+                                    @click="isVisibleFile = !isVisibleFile"
+                                    class="btn btn-success">Добавить файл</a>
                             @endif
                             </div>
                             <div class="form-group" v-show="isVisibleFile">
@@ -268,7 +276,6 @@
                                     name="file"
                                     title="Поддерживаемые форматы файлов jpg, pdf, zip"
                                     class="custom-file">
-
                             </div>
                             <button type="submit" class="btn btn-primary">Сохранить</button>
                         </form>

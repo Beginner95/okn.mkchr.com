@@ -57,3 +57,7 @@ if (complexName !== 'undefined') {
 if (districtName !== 'undefined') {
     $('input[name="district"]').val(districtName);
 }
+
+$('#deleteFile').on('click', function () {
+    $('#fileName').val('');
+});
