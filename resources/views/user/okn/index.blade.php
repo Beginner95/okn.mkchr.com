@@ -27,8 +27,8 @@
                                 </td>
                                 <td>
                                     <select name="owner" id="" class="form-control" title="Собственность ОКН (ФС/РС)">
-                                        <option value="0">Республиканского значения</option>
-                                        <option value="1">Федерального значения</option>
+                                        <option value="0">Республиканская собственность</option>
+                                        <option value="1">Федеральная собственность</option>
                                     </select>
                                 </td>
                                 <td>

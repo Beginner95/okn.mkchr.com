@@ -9,7 +9,7 @@
                         @if (!Request::is('complex/create'))
                             Добавление нового объекта
                         @else
-                            Добавление нового комплекса (асамблея)
+                            Добавление нового комплекса (ансамбля)
                         @endif
                     </div>
                     <div class="card-body">
@@ -22,7 +22,7 @@
                                             @if (!Request::is('complex/create'))
                                                 Наименование ОКН
                                             @else
-                                                Наименование (асамблея)
+                                                Наименование (ансамбля)
                                             @endif
                                         </label>
                                         <textarea
@@ -37,7 +37,7 @@
                                             @if (!Request::is('complex/create'))
                                                 Наименование ОКН на чеченском языке
                                             @else
-                                                Наименование комплекса (асамблея) на чеченском языке
+                                                Наименование комплекса (ансамбля) на чеченском языке
                                             @endif
                                         </label>
                                         <textarea
@@ -74,7 +74,7 @@
                                             @if (!Request::is('complex/create'))
                                                 Датировка ОКН
                                             @else
-                                                Датировка ОКН комплекса (асамблея)
+                                                Датировка ОКН комплекса (ансамбля)
                                             @endif
                                         </label>
                                         <input type="text" name="date-okn" class="form-control" title="Датировка ОКН">
@@ -120,8 +120,8 @@
                                     <div class="col">
                                         <label for="">Собственность ОКН (ФС/РС)</label>
                                         <select name="owner" id="" class="form-control" title="Собственность ОКН (ФС/РС)">
-                                            <option value="0">Республиканского значения</option>
-                                            <option value="1">Федерального значения</option>
+                                            <option value="0">Республиканская собственность</option>
+                                            <option value="1">Федеральная собственность</option>
                                         </select>
                                     </div>
                                 </div>
@@ -191,7 +191,7 @@
                                             @if (!Request::is('complex/create'))
                                                 Состояние ОКН
                                             @else
-                                                Состояние комплекса (асамблея)
+                                                Состояние комплекса (ансамбля)
                                             @endif
                                         </label>
                                         <select name="state" id="" class="form-control" title="Состояние ОКН">
