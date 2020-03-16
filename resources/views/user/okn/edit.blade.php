@@ -112,7 +112,7 @@
                                     <div
                                         id="districtName"
                                         class="col"
-                                        data-district-name="{{ $okn->district->name }}">
+                                        data-district-name="{{ !empty($okn->district->name) ? $okn->district->name : '' }}">
                                         <label for="">Адрес</label>
                                         <autocomplete-district></autocomplete-district>
                                     </div>
