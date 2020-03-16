@@ -181,7 +181,8 @@ class IndexController extends Controller
     {
         if (!empty($complexName)) {
             $complex = new Okn();
-            $complex = $complex->getFindByName($complexName)->id;
+            $complex = $complex->getFindByName($complexName);
+            $complex = !empty($complex) ? $complex->id : null;
         } else {
             $complex = null;
         }
@@ -192,7 +193,8 @@ class IndexController extends Controller
     {
         if (!empty($districtName)) {
             $district = new District();
-            $district = $district->getFindByName($districtName)->id;
+            $district = $district->getFindByName($districtName);
+            $district = !empty($district) ? $district->id : null;
         } else {
             $district = null;
         }
