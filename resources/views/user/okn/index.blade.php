@@ -159,9 +159,9 @@
                                         </td>
                                         <td>
                                             @if ($object->owner === '0')
-                                                РЗ
+                                                РС
                                             @else
-                                                ФЗ
+                                                ФС
                                             @endif
                                         </td>
                                         <td>{{ $object->latitude }}</td>
