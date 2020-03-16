@@ -48,6 +48,12 @@ const app = new Vue({
 });
 
 let complexName = $('#complexName').attr('data-complex-name');
+let districtName = $('#districtName').attr('data-district-name');
+
 if (complexName !== 'undefined') {
     $('input[name="complex"]').val(complexName);
+}
+
+if (districtName !== 'undefined') {
+    $('input[name="district"]').val(districtName);
 }

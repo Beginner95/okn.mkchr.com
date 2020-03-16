@@ -109,7 +109,10 @@
 
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col">
+                                    <div
+                                        id="districtName"
+                                        class="col"
+                                        data-district-name="{{ $okn->district->name }}">
                                         <label for="">Адрес</label>
                                         <autocomplete-district></autocomplete-district>
                                     </div>
