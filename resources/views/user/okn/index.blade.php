@@ -13,34 +13,42 @@
                         <span style="display: none">{{ csrf_token() }}</span>
                         <table class="table table-bordered" cellspacing="0">
                             <tr>
+                                <th>Район</th>
                                 <th>Категория историко-культурного значения</th>
                                 <th>Собственность ОКН (ФС/РС)</th>
                                 <th>Состояние ОКН</th>
                                 <th>Статус (Зарегистрирован/выявлен)</th>
                             </tr>
                             <tr>
+                                <td id="districtName" data-district-name="{{ Request::get('district') }}">
+                                    <autocomplete-district></autocomplete-district>
+                                </td>
                                 <td>
                                     <select name="category" id="" class="form-control" title="Категория историко-культурного значения">
-                                        <option value="0">Республиканского значения</option>
-                                        <option value="1">Федерального значения</option>
+                                        <option value="">--Выбрать--</option>
+                                        <option value="0" @if (Request::get('category') === '0') selected @endif>Республиканского значения</option>
+                                        <option value="1" @if (Request::get('category') === '1') selected @endif>Федерального значения</option>
                                     </select>
                                 </td>
                                 <td>
                                     <select name="owner" id="" class="form-control" title="Собственность ОКН (ФС/РС)">
-                                        <option value="0">Республиканская собственность</option>
-                                        <option value="1">Федеральная собственность</option>
+                                        <option value="">--Выбрать--</option>
+                                        <option value="0" @if (Request::get('owner') === '0') selected @endif>Республиканская собственность</option>
+                                        <option value="1" @if (Request::get('owner') === '1') selected @endif>Федеральная собственность</option>
                                     </select>
                                 </td>
                                 <td>
                                     <select name="state" id="" class="form-control" title="Состояние ОКН">
-                                        <option value="0">Неудовлетворительное</option>
-                                        <option value="1">Удовлетворительное</option>
+                                        <option value="">--Выбрать--</option>
+                                        <option value="0" @if (Request::get('state') === '0') selected @endif>Неудовлетворительное</option>
+                                        <option value="1" @if (Request::get('state') === '1') selected @endif>Удовлетворительное</option>
                                     </select>
                                 </td>
                                 <td>
                                     <select name="status" id="" class="form-control" title="Статус (Зарегистрирован/выявлен)">
-                                        <option value="0">Выявлен</option>
-                                        <option value="1">Зарегистрирован</option>
+                                        <option value="">--Выбрать--</option>
+                                        <option value="0" @if (Request::get('status') === '0') selected @endif>Выявлен</option>
+                                        <option value="1" @if (Request::get('status') === '1') selected @endif>Зарегистрирован</option>
                                     </select>
                                 </td>
                             </tr>

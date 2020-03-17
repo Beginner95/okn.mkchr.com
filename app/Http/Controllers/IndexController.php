@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\District;
+use App\Http\Filter;
 use App\Http\UploadFile;
 use Illuminate\Http\Request;
 use App\Okn;
@@ -21,8 +22,10 @@ class IndexController extends Controller
      */
     public function index(Request $request)
     {
+        $objects = Okn::where('isComplex', null)->orderBy('id', 'desc');
+        $objects = (new Filter($objects, $request))->apply();
         $limit = $request['limit'];
-        $objects = Okn::paginate($limit);
+        $objects = $objects->paginate($limit);
         $limits = [20, 30, 40, 50];
 
         return view('user.okn.index', compact('objects', 'limits'));
