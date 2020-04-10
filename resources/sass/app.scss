@@ -44,3 +44,20 @@
     float: right;
     padding: 0 7px;
 }
+
+.headings li:hover {
+    color: #ffffff;
+    background: #2176bd;
+}
+
+.headings li:before {
+    content: "\2713";
+    width: 10px;
+    height: 10px;
+    padding: 0 15px 0 0;
+}
+
+.headings .column-hide:before {
+    content: "";
+    padding: 0 25px 0 0;
+}

@@ -88,14 +88,20 @@
                             <span>+</span>
                         </a>
                     </div>
+
+                    <div class="card-header">
+                        <button class="nav-link dropdown-toggle float-right btn btn-sm btn-primary" data-toggle="dropdown">Столбцы</button>
+                        <div class="dropdown-menu headings"></div>
+                    </div>
+
                     <div class="card-body">
 
                         @if (empty($objects->toArray()['data']))
                             В базе нет ОКН!
                         @else
-                            <table class="table table-bordered">
+                            <table class="table table-bordered" id="dataTable">
                                 <thead class="thead-light">
-                                    <tr>
+                                    <tr id="columns">
                                         <th scope="col">№</th>
                                         <th scope="col">Наименование объекта культурного наследия (ОКН)</th>
                                         <th scope="col">Наименование объекта культурного наследия на чеченском языке</th>

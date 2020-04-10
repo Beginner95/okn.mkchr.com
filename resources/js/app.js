@@ -61,3 +61,84 @@ if (districtName !== 'undefined') {
 $('#deleteFile').on('click', function () {
     $('#fileName').val('');
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const table = document.getElementById('dataTable');
+    const columns = document.getElementById('columns');
+    let html = '';
+
+    for(let i = 1; i < columns.cells.length; i++) {
+        let column_hide = '';
+        if (getStorage() !== null) {
+            let columnsHidden = getStorage();
+            columnsHidden = columnsHidden.indexOf(String(i));
+            if (columnsHidden !== -1) {
+                column_hide = 'column-hide';
+            }
+        }
+        html += '<li data-index="' + i + '" class="dropdown-item ' + column_hide + '">' + columns.cells[i].innerText + '</li>';
+    }
+
+    const headings = document.getElementsByClassName('headings')[0];
+    headings.innerHTML = html;
+
+    function hideColumn(index) {
+        for(let i = 0; i < table.rows.length; i++) {
+            $(table.rows[i].cells[index]).hide();
+        }
+        storage(index, 'add');
+    }
+
+    function showColumn(index) {
+        for (let i = 0; i < table.rows.length; i++) {
+            $(table.rows[i].cells[index]).show();
+        }
+        storage(index, 'remove');
+    }
+
+    hideColumnsInStorage();
+    function hideColumnsInStorage() {
+        let columnsHidden = getStorage();
+        if (columnsHidden !== null) {
+            for (let i = 0; i < columnsHidden.length; i++) {
+                if (+columnsHidden[i] !== 0) {
+                    hideColumn(columnsHidden[i]);
+                }
+            }
+        }
+    }
+
+    headings.addEventListener('click', function (event) {
+        let elem = event.target;
+        if (elem.classList.contains('column-hide')) {
+            elem.classList.remove('column-hide');
+            showColumn(elem.dataset.index);
+        } else {
+            elem.classList.add('column-hide');
+            hideColumn(elem.dataset.index);
+        }
+    });
+
+    function storage(index, action) {
+        let columnsHidden = getStorage();
+        if (columnsHidden === null) {
+            let indexesColumn = [];
+            indexesColumn.push(index);
+            localStorage.setItem('columns', indexesColumn);
+        } else {
+            if (columnsHidden.indexOf(String(index)) === -1) {
+                columnsHidden.push(index);
+            }
+
+            if (action === 'remove') {
+                columnsHidden.splice(columnsHidden.indexOf(String(index)), 1);
+            }
+
+            localStorage.setItem('columns', columnsHidden);
+        }
+    }
+
+    function getStorage() {
+        return (localStorage.getItem('columns') !== null) ? localStorage.getItem('columns').split(',') : null;
+    }
+});
