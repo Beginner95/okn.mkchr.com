@@ -66,7 +66,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const table = document.getElementById('dataTable');
     const columns = document.getElementById('columns');
     let html = '';
-
+    let fontSize = (localStorage.getItem('fontSize') !== null) ? localStorage.getItem('fontSize') : '10px';
+    $(table).css('font-size', fontSize + 'px');
     for(let i = 1; i < columns.cells.length; i++) {
         let column_hide = '';
         if (getStorage() !== null) {
@@ -140,5 +141,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function getStorage() {
         return (localStorage.getItem('columns') !== null) ? localStorage.getItem('columns').split(',') : null;
+    }
+
+    $(document)
+        .on('click', '#upFont', e => {
+            e.preventDefault();
+            changeFontSize('inc');
+        })
+        .on('click', '#downFont', e => {
+            e.preventDefault();
+            changeFontSize('dec');
+        });
+
+    const changeFontSize = operation => {
+        let step = 2;
+        if (operation === 'inc') {
+            fontSize = parseInt(fontSize) + step;
+            $(table).css('font-size', `${fontSize}px`);
+        } else {
+            fontSize = parseInt(fontSize) - step;
+            $(table).css('font-size', `${fontSize}px`);
+        }
+        localStorage.setItem('fontSize', fontSize);
     }
 });

@@ -88,11 +88,18 @@
                             <span>+</span>
                         </a>
                     </div>
-
-                    <div class="card-header">
-                        <button class="nav-link dropdown-toggle float-right btn btn-sm btn-primary" data-toggle="dropdown">Столбцы</button>
-                        <div class="dropdown-menu headings"></div>
-                    </div>
+                    @if (!empty($objects->toArray()['data']))
+                        <div class="card-header">
+                            <div class="btn-group-sm">
+                                <button type="button" class="nav-link dropdown-toggle float-right btn btn-sm btn-primary" data-toggle="dropdown">Столбцы</button>
+                                <div class="dropdown-menu headings"></div>
+                            </div>
+                            <div class="btn-group-sm">
+                                <button type="button" id="downFont" class="btn btn-sm btn-outline-primary" title="Уменьшить шрифт">А-</button>
+                                <button type="button" id="upFont" class="btn btn-sm btn-outline-primary" title="Увеличить шрифт">А+</button>
+                            </div>
+                        </div>
+                    @endif
 
                     <div class="card-body">
 
