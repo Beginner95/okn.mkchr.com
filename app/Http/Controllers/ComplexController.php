@@ -31,6 +31,18 @@ class ComplexController extends Controller
         return view('user.okn.edit', compact('okn'));
     }
 
+    public static function getComplexId($complexName)
+    {
+        if (!empty($complexName)) {
+            $complex = new Okn();
+            $complex = $complex->getFindByName($complexName);
+            $complex = !empty($complex) ? $complex->id : null;
+        } else {
+            $complex = null;
+        }
+        return $complex;
+    }
+
     public function autocompleteComplex(Request $request)
     {
         $searchquery = $request->queryString;
