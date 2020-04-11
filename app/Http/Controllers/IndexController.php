@@ -49,12 +49,13 @@ class IndexController extends Controller
      */
     public function store(Request $request)
     {
-        $complex_id = $this->getComplexId($request['complex']);
-        $district_id = $this->getDistrictId($request['district']);
-
+        $complex_id = ComplexController::getComplexId($request['complex']);
+        $district_id = DistrictController::getDistrictId($request['district']);
+        $fileObj = new UploadFile();
         $file = null;
+
         if (!empty($request->file)) {
-            $file = $this->getFileName($request->file);
+            $file = $fileObj->uploadFile($request->file);
         }
 
 
@@ -124,14 +125,16 @@ class IndexController extends Controller
     public function update(Request $request, $id)
     {
         $okn = Okn::where('id', $id)->first();
-        $complex_id = $this->getComplexId($request['complex']);
-        $district_id = $this->getDistrictId($request['district']);
+        $complex_id = ComplexController::getComplexId($request['complex']);
+        $district_id = DistrictController::getDistrictId($request['district']);
+
+        $fileObj = new UploadFile();
 
         if (!empty($request->file)) {
-            $okn->file = $this->getFileName($request->file);
+            $okn->file = $fileObj->uploadFile($request->file);
         } else {
             if (empty($request['file-name'])) {
-                $this->deleteFile($okn->file);
+                $fileObj->deleteCurrentFile($okn->file);
                 $okn->file = null;
             }
         }
@@ -179,41 +182,5 @@ class IndexController extends Controller
             return response()->json('ok');
         }
         return response()->json('error');
-    }
-
-    public function getComplexId($complexName)
-    {
-        if (!empty($complexName)) {
-            $complex = new Okn();
-            $complex = $complex->getFindByName($complexName);
-            $complex = !empty($complex) ? $complex->id : null;
-        } else {
-            $complex = null;
-        }
-        return $complex;
-    }
-
-    public function getDistrictId($districtName)
-    {
-        if (!empty($districtName)) {
-            $district = new District();
-            $district = $district->getFindByName($districtName);
-            $district = !empty($district) ? $district->id : null;
-        } else {
-            $district = null;
-        }
-        return $district;
-    }
-
-    public function getFileName($file)
-    {
-        $fileObj = new UploadFile();
-        return $fileObj->uploadFile($file);
-    }
-
-    public function deleteFile($file)
-    {
-        $fileObj = new UploadFile();
-        $fileObj->deleteCurrentFile($file);
     }
 }
