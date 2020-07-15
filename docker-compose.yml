@@ -28,6 +28,9 @@ services:
     ports:
       - "3307:3306"
     restart: always
+
+    volumes:
+      - ./db_mysql:/var/lib/mysql 
     environment:
       MYSQL_ROOT_PASSWORD: okn_2020
       MYSQL_DATABASE: okn_2020
