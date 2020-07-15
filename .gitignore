@@ -8,6 +8,7 @@
 /public/storage
 /storage/*.key
 /vendor
+/db_mysql
 .env
 .env.backup
 .phpunit.result.cache
