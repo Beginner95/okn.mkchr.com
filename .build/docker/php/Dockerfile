@@ -16,7 +16,7 @@ RUN apt-get install -y curl libpq-dev libzip-dev zip unzip git wget libsqlite3-d
     libpng16-16 libjpeg-dev libpng-dev libxslt-dev libwebp-dev libjpeg62-turbo-dev libxpm-dev \
     libicu-dev libmemcached-dev libmagick++-dev libmagickwand-dev libzip-dev cron libgmp-dev
 
-RUN docker-php-ext-install -j$(nproc) iconv json zip
+RUN docker-php-ext-install -j$(nproc) iconv json zip gd
 
 RUN curl -s https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 
