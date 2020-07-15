@@ -44,3 +44,18 @@ services:
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: myUserPass
+  
+  node:
+    build:
+      context: .
+      dockerfile: ./.build/docker/node/Dockerfile
+    image: okn_node
+    depends_on:
+      - nginx
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run prod
+    ports:
+      - "3000:3000"
+      - "3001:3001"
