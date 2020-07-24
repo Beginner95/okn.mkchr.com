@@ -7,9 +7,4 @@ use Illuminate\Database\Eloquent\Model;
 class District extends Model
 {
     protected $table = 'district';
-
-    public function getFindByName($name)
-    {
-        return self::where('name', $name)->first();
-    }
 }
