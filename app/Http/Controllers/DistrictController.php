@@ -10,12 +10,19 @@ class DistrictController extends Controller
     public static function getDistrictId($districtName)
     {
         if (!empty($districtName)) {
-            $district = new District();
-            $district = $district->getFindByName($districtName);
-            $district = !empty($district) ? $district->id : null;
+            $district = District::where('name', $districtName)->first();
+            if (!empty($district)) {
+                $district = $district->id;
+            } else {
+                $district = new District();
+                $district->name = $districtName;
+                $district->save();
+                $district = $district->id;
+            }
         } else {
             $district = null;
         }
+
         return $district;
     }
 
