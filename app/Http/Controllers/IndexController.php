@@ -15,11 +15,6 @@ class IndexController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
         $objects = Okn::where('isComplex', null)->orderBy('id', 'desc');
@@ -31,22 +26,11 @@ class IndexController extends Controller
         return view('user.okn.index', compact('objects', 'limits'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('user.okn.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $complex_id = ComplexController::getComplexId($request['complex']);
@@ -89,23 +73,11 @@ class IndexController extends Controller
         return redirect('/');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $okn = Okn::where('id', $id)->first();
@@ -115,13 +87,6 @@ class IndexController extends Controller
         return view('user.okn.edit', compact('okn'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $okn = Okn::where('id', $id)->first();
@@ -167,12 +132,6 @@ class IndexController extends Controller
         return redirect('/');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $okn = Okn::where('id', $id)->first();
