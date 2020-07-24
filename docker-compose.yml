@@ -30,7 +30,7 @@ services:
     restart: always
 
     volumes:
-      - ./db_mysql:/var/lib/mysql 
+      - ./storage/docker/mysql:/var/lib/mysql 
     environment:
       MYSQL_ROOT_PASSWORD: okn_2020
       MYSQL_DATABASE: okn_2020
