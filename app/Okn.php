@@ -3,8 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use \Illuminate\Database\Eloquent\Builder;
 
 /**
+ * @mixin Builder
  * @property string $name
  * @property string $name_chr
  * @property int $isComplex
