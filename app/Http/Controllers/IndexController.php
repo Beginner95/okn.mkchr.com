@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\District;
+use App\Models\District;
 use App\Http\Filter;
 use App\Http\UploadFile;
 use Illuminate\Http\Request;
-use App\Okn;
+use App\Models\Okn;
 
 class IndexController extends Controller
 {

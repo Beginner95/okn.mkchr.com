@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\UploadFile;
-use App\Okn;
+use App\Models\Okn;
 use Illuminate\Http\Request;
 
 class ComplexController extends Controller
