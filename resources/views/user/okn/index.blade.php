@@ -83,8 +83,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        Список объектов 
-                        <a href="{{ route('object.create') }}" class="btn btn-primary add-weight" title="Добавить объект">
+                        Список объектов
+                        <a href="{{ route('okn.create') }}" class="btn btn-primary add-weight" title="Добавить объект">
                             <span>+</span>
                         </a>
                     </div>
