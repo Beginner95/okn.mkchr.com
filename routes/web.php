@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'IndexController@index');
-Route::post('/object-update/{id}', 'IndexController@update');
-Route::resource('object', 'IndexController');
+Route::resource('okn', 'OknController');
 Route::get('/autocomplete-complex', 'ComplexController@autocompleteComplex');
 Route::resource('complex', 'ComplexController');
 Route::get('/autocomplete-district', 'DistrictController@autocompleteDistrict');
