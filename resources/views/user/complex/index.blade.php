@@ -84,7 +84,7 @@
                 <div class="card">
                     <div class="card-header">
                         Список комплексов
-                        <a href="{{ route('object.create') }}" class="btn btn-primary add-weight" title="Добавить объект">
+                        <a href="{{ route('complex.create') }}" class="btn btn-primary add-weight" title="Добавить объект">
                             <span>+</span>
                         </a>
                     </div>
