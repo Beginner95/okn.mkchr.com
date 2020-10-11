@@ -23,7 +23,7 @@ class ComplexController extends Controller
 
     public function create()
     {
-        return view('user.okn.create');
+        return view('user.complex.create');
     }
 
     public function store(Request $request)
