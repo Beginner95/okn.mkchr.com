@@ -7,7 +7,7 @@
                 <div class="card block-weight">
                     <div class="card-header">Добавление нового комплекса (ансамбля)</div>
                     <div class="card-body">
-                        <form action="/object" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('complex.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <div class="row">
