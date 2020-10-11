@@ -57,7 +57,7 @@ class ComplexController extends Controller
     public function edit($id)
     {
         $okn = Okn::where('id', $id)->first();
-        return view('user.okn.edit', compact('okn'));
+        return view('user.complex.edit', compact('okn'));
     }
 
     public static function getComplexId($complexName)
