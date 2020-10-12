@@ -71,14 +71,14 @@
                                     <div class="col">
                                         <label for="">{{ trans('complex.category') }}</label>
                                         <select name="category" id="" class="form-control" title="{{ trans('complex.category') }}">
-                                            <option value="0">{{ trans('complex.category_republic') }}</option>
+                                            <option value="0">{{ trans('complex.category_republican') }}</option>
                                             <option value="1">{{ trans('complex.category_federal') }}</option>
                                         </select>
                                     </div>
                                     <div class="col">
                                         <label for="">{{ trans('complex.owner') }}</label>
                                         <select name="owner" id="" class="form-control" title="{{ trans('complex.owner') }}">
-                                            <option value="0">{{ trans('complex.owner_republic') }}</option>
+                                            <option value="0">{{ trans('complex.owner_republican') }}</option>
                                             <option value="1">{{ trans('complex.owner_federal') }}</option>
                                         </select>
                                     </div>
