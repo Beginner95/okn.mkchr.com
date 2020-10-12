@@ -6,24 +6,16 @@
             <div class="col-md-12">
                 <div class="card block-weight">
                     <div class="card-header">
-                        @if (!Request::is('complex/create'))
-                            Добавление нового объекта
-                        @else
-                            Добавление нового комплекса (ансамбля)
-                        @endif
+                        Добавление нового комплекса (ансамбля)
                     </div>
                     <div class="card-body">
-                        <form action="/object-update/{{$okn->id}}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('complex.update') }}/{{$okn->id}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col">
                                         <label for="">
-                                            @if (!Request::is('complex/*'))
-                                                Наименование ОКН
-                                            @else
-                                                Наименование (ансамбля)
-                                            @endif
+                                            Наименование комплекса (ансамбля)
                                         </label>
                                         <textarea
                                             name="okn-name"
@@ -34,11 +26,7 @@
                                     </div>
                                     <div class="col">
                                         <label for="">
-                                            @if (!Request::is('complex/*'))
-                                                Наименование ОКН на чеченском языке
-                                            @else
-                                                Наименование комплекса (ансамбля) на чеченском языке
-                                            @endif
+                                            Наименование комплекса (ансамбля) на чеченском языке
                                         </label>
                                         <textarea
                                             name="okn-name-chr"
@@ -48,45 +36,12 @@
                                     </div>
                                 </div>
                             </div>
-                            @if (!Request::is('complex/*'))
-                                <div class="form-group">
-                                    <label for="complex_exist">Входит в состав ансамбля</label>
-                                    <input
-                                        @if (!empty($okn->complex_id))
-                                            checked
-                                        @endif
-                                        type="checkbox"
-                                        name="complex"
-                                        id="complex_exist"
-                                        @click="isVisible = !isVisible"
-                                        title="Выберите если объект входит в комплекс (ансамбль)">
-                                </div>
-
-                                <div
-                                    id="complexName"
-                                    data-complex-name="@if(!empty($okn->complex)) {{ $okn->complex->name }}@endif"
-                                    class="form-group"
-                                    @if (!empty($okn->complex_id))
-                                        v-if="!isVisible"
-                                    @else
-                                        v-if="isVisible"
-                                    @endif>
-                                    <label for="">Выберите комплекс</label>
-                                    <autocomplete-complex></autocomplete-complex>
-                                </div>
-                            @else
-                                <input type="hidden" name="is-complex" value="1">
-                            @endif
-
+                            <input type="hidden" name="is-complex" value="1">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col">
                                         <label for="origin">
-                                            @if (!Request::is('complex/*'))
-                                                Датировка ОКН
-                                            @else
-                                                Датировка ОКН комплекса (ансамбля)
-                                            @endif
+                                            Датировка ОКН комплекса (ансамбля)
                                         </label>
                                         <input
                                             type="text"
@@ -169,82 +124,6 @@
                                     </div>
                                 </div>
                             </div>
-                            @if (!Request::is('complex/*'))
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col">
-                                            <label for="">Необходимо средств по сохранению</label>
-                                            <input
-                                                type="text"
-                                                name="sum-npd"
-                                                class="form-control"
-                                                title="Средства, необходимые на проведение работ по сохранению ОКН по НПД (рублей)"
-                                                value="{{ $okn->sum_npd }}">
-                                        </div>
-                                        <div class="col">
-                                            <label for="">Дата начала работ по сохранению ОКН</label>
-                                            <input
-                                                type="date"
-                                                name="start-job"
-                                                class="form-control"
-                                                title="Дата начала работ по сохранению ОКН"
-                                                value="{{ \Carbon\Carbon::parse($okn->start_job)->format('Y-m-d') }}">
-                                        </div>
-                                        <div class="col">
-                                            <label for="">Дата окончания работ по сохранению ОКН</label>
-                                            <input
-                                                type="date"
-                                                name="end-job"
-                                                class="form-control"
-                                                title="Дата окончания работ по сохранению ОКН (Акт)"
-                                                value="{{ \Carbon\Carbon::parse($okn->end_job)->format('Y-m-d') }}">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col">
-                                            <label for="">Источник финансирования</label>
-                                            <input
-                                                type="text"
-                                                name="finance"
-                                                class="form-control"
-                                                title="Источник финансирования работ по сохранению ОКН"
-                                                value="{{ $okn->finance }}">
-                                        </div>
-                                        <div class="col">
-                                            <label for="">Наличие научно-проектной документации</label>
-                                            <input
-                                                type="text"
-                                                name="npd"
-                                                class="form-control"
-                                                title="Наличие научно-проектной документации"
-                                                value="{{ $okn->npd }}">
-                                        </div>
-                                        <div class="col">
-                                            <label for="">
-                                                @if (!Request::is('complex/*'))
-                                                    Состояние ОКН
-                                                @else
-                                                    Состояние комплекса (ансамбля)
-                                                @endif
-                                            </label>
-                                            <select name="state" id="" class="form-control" title="Состояние ОКН">
-                                                <option value="0" @if($okn->state === '0') selected @endif>Неудовлетворительное</option>
-                                                <option value="1" @if($okn->state === '1') selected @endif>Удовлетворительное</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="">Статус (Зарегистрирован/выявлен)</label>
-                                    <select name="status" id="" class="form-control">
-                                        <option value="0" @if($okn->status === '0') selected @endif>Выявлен</option>
-                                        <option value="1" @if($okn->status === '1') selected @endif>Зарегистрирован</option>
-                                    </select>
-                                </div>
-                            @endif
                             <div class="form-group">
                                 <label for="">Примечание</label>
                                 <textarea name="comment" class="form-control">{{ $okn->comment }}</textarea>
@@ -266,7 +145,9 @@
                                     href="#"
                                     v-if="!isVisibleFile"
                                     @click="isVisibleFile = !isVisibleFile"
-                                    class="btn btn-success">Добавить файл</a>
+                                    class="btn btn-success">
+                                    Добавить файл
+                                </a>
                             @endif
                             </div>
                             <div class="form-group" v-show="isVisibleFile">
