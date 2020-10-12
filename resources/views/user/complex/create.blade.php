@@ -5,27 +5,27 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card block-weight">
-                    <div class="card-header">Добавление нового комплекса (ансамбля)</div>
+                    <div class="card-header">{{ trans('complex.add') }}</div>
                     <div class="card-body">
                         <form action="{{ route('complex.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col">
-                                        <label for="">Наименование комплекса (ансамбля)</label>
+                                        <label for="">{{ trans('complex.name_ru') }}</label>
                                         <textarea
                                             name="complex-name"
                                             class="form-control"
-                                            title="Наименование объекта культурного наследия (ОКН)"
+                                            title="{{ trans('complex.name_ru') }}"
                                             required>
                                         </textarea>
                                     </div>
                                     <div class="col">
-                                        <label for="">Наименование комплекса (ансамбля) на чеченском языке</label>
+                                        <label for="">{{ trans('complex.name_chr') }}</label>
                                         <textarea
                                             name="complex-name-chr"
                                             class="form-control"
-                                            title="Наименование объекта культурного наследия на чеченском языке">
+                                            title="{{ trans('complex.name_chr') }}">
                                         </textarea>
                                     </div>
                                 </div>
@@ -34,16 +34,16 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col">
-                                        <label for="origin">Датировка ОКН комплекса (ансамбля)</label>
-                                        <input type="text" name="date-complex" class="form-control" title="Датировка ОКН">
+                                        <label for="origin">{{ trans('complex.date') }}</label>
+                                        <input type="text" name="date-complex" class="form-control" title="{{ trans('complex.date') }}">
                                     </div>
                                     <div class="col">
-                                        <label for="origin">Акт о постановке на гос. учет / о принятии на гос. охрану</label>
+                                        <label for="origin">{{ trans('complex.act') }}</label>
                                         <input
                                             type="text"
                                             name="act"
                                             class="form-control"
-                                            title="Нормативный Акт о постановке на гос. учет // о принятии на гос. охрану">
+                                            title="{{ trans('complex.act') }}">
                                     </div>
                                 </div>
                             </div>
@@ -51,17 +51,17 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col">
-                                        <label for="">Адрес</label>
+                                        <label for="">{{ trans('complex.address') }}</label>
                                         <autocomplete-district></autocomplete-district>
                                     </div>
                                     <div class="col">
-                                        <label for="">Дополните адрес</label>
+                                        <label for="">{{ trans('complex.additional_address') }}</label>
                                         <input
                                             type="text"
                                             name="address"
                                             class="form-control"
-                                            title="Дополните адрес после района"
-                                            placeholder="Дополните адрес после района">
+                                            title="{{ trans('complex.additional_address') }}"
+                                            placeholder="{{ trans('complex.additional_address') }}">
                                     </div>
                                 </div>
                             </div>
@@ -69,17 +69,17 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col">
-                                        <label for="">Категория историко-культурного значения</label>
-                                        <select name="category" id="" class="form-control" title="Категория историко-культурного значения">
-                                            <option value="0">Республиканского значения</option>
-                                            <option value="1">Федерального значения</option>
+                                        <label for="">{{ trans('complex.category') }}</label>
+                                        <select name="category" id="" class="form-control" title="{{ trans('complex.category') }}">
+                                            <option value="0">{{ trans('complex.category_republican') }}</option>
+                                            <option value="1">{{ trans('complex.category_federal') }}</option>
                                         </select>
                                     </div>
                                     <div class="col">
-                                        <label for="">Собственность ОКН (ФС/РС)</label>
-                                        <select name="owner" id="" class="form-control" title="Собственность ОКН (ФС/РС)">
-                                            <option value="0">Республиканская собственность</option>
-                                            <option value="1">Федеральная собственность</option>
+                                        <label for="">{{ trans('complex.owner') }}</label>
+                                        <select name="owner" id="" class="form-control" title="{{ trans('complex.owner') }}">
+                                            <option value="0">{{ trans('complex.owner_republican') }}</option>
+                                            <option value="1">{{ trans('complex.owner_federal') }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -88,31 +88,31 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col">
-                                        <label for="">Широта</label>
-                                        <input name="latitude" class="form-control" title="Широта">
+                                        <label for="">{{ trans('basic.latitude') }}</label>
+                                        <input name="latitude" class="form-control" title="{{ trans('basic.latitude') }}">
                                     </div>
                                     <div class="col">
-                                        <label for="">Долгота</label>
-                                        <input type="text" name="longitude" class="form-control" title="Долгота">
+                                        <label for="">{{ trans('basic.longitude') }}</label>
+                                        <input type="text" name="longitude" class="form-control" title="{{ trans('basic.longitude') }}">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="">Примечание</label>
+                                <label for="">{{ trans('basic.comment') }}</label>
                                 <textarea name="comment" class="form-control"></textarea>
                             </div>
 
                             <div class="form-group">
-                                <label for="">Приложить файл</label>
+                                <label for="">{{ trans('basic.add_file') }}</label>
                                 <input
                                     type="file"
                                     name="file"
-                                    title="Поддерживаемые форматы файлов jpg, pdf, zip"
+                                    title="{{ trans('basic.supported_formats') }}"
                                     class="custom-file">
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Добавить</button>
+                            <button type="submit" class="btn btn-primary">{{ trans('basic.add') }}</button>
                         </form>
                     </div>
                 </div>
