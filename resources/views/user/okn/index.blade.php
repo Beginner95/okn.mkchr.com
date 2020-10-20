@@ -5,50 +5,48 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        Фильтр
-                    </div>
+                    <div class="card-header">{{ trans('okn.filter') }}</div>
                     <div class="card-body">
                         <form action="/" method="get">
                         <span style="display: none">{{ csrf_token() }}</span>
                         <table class="table table-bordered" cellspacing="0">
                             <tr>
-                                <th>Район</th>
-                                <th>Категория историко-культурного значения</th>
-                                <th>Собственность ОКН (ФС/РС)</th>
-                                <th>Состояние ОКН</th>
-                                <th>Статус (Зарегистрирован/выявлен)</th>
+                                <th>{{ trans('okn.district') }}</th>
+                                <th>{{ trans('okn.category') }}</th>
+                                <th>{{ trans('okn.owner') }}</th>
+                                <th>{{ trans('okn.condition') }}</th>
+                                <th>{{ trans('okn.status') }}</th>
                             </tr>
                             <tr>
                                 <td id="districtName" data-district-name="{{ Request::get('district') }}">
                                     <autocomplete-district></autocomplete-district>
                                 </td>
                                 <td>
-                                    <select name="category" id="" class="form-control" title="Категория историко-культурного значения">
-                                        <option value="">--Выбрать--</option>
-                                        <option value="0" @if (Request::get('category') === '0') selected @endif>Республиканского значения</option>
-                                        <option value="1" @if (Request::get('category') === '1') selected @endif>Федерального значения</option>
+                                    <select name="category" id="" class="form-control" title="{{ trans('okn.category') }}">
+                                        <option value="">{{ trans('basic.choose') }}</option>
+                                        <option value="0" @if (Request::get('category') === '0') selected @endif>{{ trans('okn.category_republican') }}</option>
+                                        <option value="1" @if (Request::get('category') === '1') selected @endif>{{ trans('okn.category_federal') }}</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <select name="owner" id="" class="form-control" title="Собственность ОКН (ФС/РС)">
-                                        <option value="">--Выбрать--</option>
-                                        <option value="0" @if (Request::get('owner') === '0') selected @endif>Республиканская собственность</option>
-                                        <option value="1" @if (Request::get('owner') === '1') selected @endif>Федеральная собственность</option>
+                                    <select name="owner" id="" class="form-control" title="{{ trans('okn.owner') }}">
+                                        <option value="">{{ trans('basic.choose') }}</option>
+                                        <option value="0" @if (Request::get('owner') === '0') selected @endif>{{ trans('okn.owner_republican') }}</option>
+                                        <option value="1" @if (Request::get('owner') === '1') selected @endif>{{ trans('okn.owner_federal') }}</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <select name="state" id="" class="form-control" title="Состояние ОКН">
-                                        <option value="">--Выбрать--</option>
-                                        <option value="0" @if (Request::get('state') === '0') selected @endif>Неудовлетворительное</option>
-                                        <option value="1" @if (Request::get('state') === '1') selected @endif>Удовлетворительное</option>
+                                    <select name="state" id="" class="form-control" title="{{ trans('okn.condition') }}">
+                                        <option value="">{{ trans('basic.choose') }}</option>
+                                        <option value="0" @if (Request::get('state') === '0') selected @endif>{{ trans('okn.unsatisfactory') }}</option>
+                                        <option value="1" @if (Request::get('state') === '1') selected @endif>{{ trans('okn.satisfactory') }}</option>
                                     </select>
                                 </td>
                                 <td>
-                                    <select name="status" id="" class="form-control" title="Статус (Зарегистрирован/выявлен)">
-                                        <option value="">--Выбрать--</option>
-                                        <option value="0" @if (Request::get('status') === '0') selected @endif>Выявлен</option>
-                                        <option value="1" @if (Request::get('status') === '1') selected @endif>Зарегистрирован</option>
+                                    <select name="status" id="" class="form-control" title="{{ trans('okn.status') }}">
+                                        <option value="">{{ trans('basic.choose') }}</option>
+                                        <option value="0" @if (Request::get('status') === '0') selected @endif>{{ trans('okn.revealed') }}</option>
+                                        <option value="1" @if (Request::get('status') === '1') selected @endif>{{ trans('okn.registered') }}</option>
                                     </select>
                                 </td>
                             </tr>
@@ -58,7 +56,7 @@
                                     <select
                                         name="limit"
                                         class="form-control"
-                                        title="Выберите количество на страницу">
+                                        title="{{ trans('okn.count_for_page') }}">
                                         @foreach($limits as $limit)
                                             <option
                                                 value="{{ $limit }}"
@@ -70,7 +68,7 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-11 text-right">
-                                    <button class="btn btn-primary pull-right">Отфильтровать</button>
+                                    <button class="btn btn-primary pull-right">{{ trans('basic.filter') }}</button>
                                 </div>
                             </div>
                         </form>
@@ -83,20 +81,20 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        Список объектов
-                        <a href="{{ route('okn.create') }}" class="btn btn-primary add-weight" title="Добавить объект">
-                            <span>+</span>
+                        {{ trans('okn.list_objects') }}
+                        <a href="{{ route('okn.create') }}" class="btn btn-primary add-weight" title="{{ trans('okn.add_object') }}">
+                            <span>{{ trans('basic.plus_icon') }}</span>
                         </a>
                     </div>
                     @if (!empty($objects->toArray()['data']))
                         <div class="card-header">
                             <div class="btn-group-sm">
-                                <button type="button" class="nav-link dropdown-toggle float-right btn btn-sm btn-primary" data-toggle="dropdown">Столбцы</button>
+                                <button type="button" class="nav-link dropdown-toggle float-right btn btn-sm btn-primary" data-toggle="dropdown">{{ trans('basic.columns') }}</button>
                                 <div class="dropdown-menu headings"></div>
                             </div>
                             <div class="btn-group-sm">
-                                <button type="button" id="downFont" class="btn btn-sm btn-outline-primary" title="Уменьшить шрифт">А-</button>
-                                <button type="button" id="upFont" class="btn btn-sm btn-outline-primary" title="Увеличить шрифт">А+</button>
+                                <button type="button" id="downFont" class="btn btn-sm btn-outline-primary" title="{{ trans('basic.decrease_font') }}">{{ trans('basic.decrease_icon') }}</button>
+                                <button type="button" id="upFont" class="btn btn-sm btn-outline-primary" title="{{ trans('basic.zoom_font') }}">{{ trans('basic.zoom_icon') }}</button>
                             </div>
                         </div>
                     @endif
@@ -104,33 +102,33 @@
                     <div class="card-body">
 
                         @if (empty($objects->toArray()['data']))
-                            В базе нет ОКН!
+                            {{ trans('okn.not_objects') }}
                         @else
                             <table class="table table-bordered" id="dataTable">
                                 <thead class="thead-light">
                                     <tr id="columns">
-                                        <th scope="col">№</th>
-                                        <th scope="col">Наименование объекта культурного наследия (ОКН)</th>
-                                        <th scope="col">Наименование объекта культурного наследия на чеченском языке</th>
-                                        <th scope="col">Наименование историко-культурного комплекса (ансамбля)</th>
-                                        <th scope="col">Наименование историко-культурного комплекса (ансамбля) на чеченском языке</th>
-                                        <th scope="col">Датировка ОКН</th>
-                                        <th scope="col">Адрес (местоположение) ОКН</th>
-                                        <th scope="col">Нормативный Акт о постановке на гос. учет // о принятии на гос. охрану</th>
-                                        <th scope="col">Категория историко-культурного значения</th>
-                                        <th scope="col">Собственность ОКН (ФС/РС)</th>
-                                        <th scope="col">Широта</th>
-                                        <th scope="col">Долгота</th>
-                                        <th scope="col">Средства, необходимые на проведение работ по сохранению ОКН по НПД</th>
-                                        <th scope="col">Дата начала работ по сохранению ОКН</th>
-                                        <th scope="col">Дата окончания работ по сохранению ОКН (Акт)</th>
-                                        <th scope="col">Источник финансирования работ по сохранению ОКН</th>
-                                        <th scope="col">Наличие научно-проектной документации</th>
-                                        <th scope="col">Состояние ОКН</th>
-                                        <th scope="col">Статус (Зарегистрирован/выявлен)</th>
-                                        <th scope="col">Примечание</th>
-                                        <th scope="col">Файл</th>
-                                        <th scope="col">Действие</th>
+                                        <th scope="col">{{ trans('basic.number_icon') }}</th>
+                                        <th scope="col">{{ trans('okn.name_ur') }}</th>
+                                        <th scope="col">{{ trans('okn.name_chr') }}</th>
+                                        <th scope="col">{{ trans('complex.name_ru') }}</th>
+                                        <th scope="col">{{ trans('complex.name_chr') }}</th>
+                                        <th scope="col">{{ trans('okn.date') }}</th>
+                                        <th scope="col">{{ trans('okn.address') }}</th>
+                                        <th scope="col">{{ trans('okn.act') }}</th>
+                                        <th scope="col">{{ trans('okn.category') }}</th>
+                                        <th scope="col">{{ trans('okn.owner') }}</th>
+                                        <th scope="col">{{ trans('basic.latitude') }}</th>
+                                        <th scope="col">{{ trans('basic.longitude') }}</th>
+                                        <th scope="col">{{ trans('okn.cost_save_object') }}</th>
+                                        <th scope="col">{{ trans('okn.date_start_work') }}</th>
+                                        <th scope="col">{{ trans('okn.date_end_work') }}</th>
+                                        <th scope="col">{{ trans('okn.source_of_financing') }}</th>
+                                        <th scope="col">{{ trans('okn.documentation') }}</th>
+                                        <th scope="col">{{ trans('okn.condition') }}</th>
+                                        <th scope="col">{{ trans('okn.status') }}</th>
+                                        <th scope="col">{{ trans('basic.comment') }}</th>
+                                        <th scope="col">{{ trans('basic.file') }}</th>
+                                        <th scope="col">{{ trans('basic.action') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -145,10 +143,10 @@
                                                 @if (!empty($object->isComplex))
                                                     {{ $object->name }}
                                                     @if ($object->getCountObjectInComplex($object->id) > 0)
-                                                        ({{ $object->getCountObjectInComplex($object->id) }} ОКН)
+                                                        ({{ $object->getCountObjectInComplex($object->id) }} {{ trans('okn.okn') }})
                                                     @endif
                                                 @else
-                                                    Не входит в комплекс (ансамбль)
+                                                    {{ trans('okn.not_included_complex') }}
                                                 @endif
                                             @else
                                                 {{ $object->complex['name'] }}
@@ -159,10 +157,10 @@
                                                 @if (!empty($object->isComplex))
                                                     {{ $object->name }}
                                                     @if ($object->getCountObjectInComplex($object->id) > 0)
-                                                        ({{ $object->getCountObjectInComplex($object->id) }} ОКН)
+                                                        ({{ $object->getCountObjectInComplex($object->id) }} {{ trans('okn.okn') }})
                                                     @endif
                                                 @else
-                                                    Не входит в комплекс (ансамбль)
+                                                    {{ trans('okn.not_included_complex') }}
                                                 @endif
                                             @else
                                                 {{ $object->complex['name_chr'] }}
@@ -194,35 +192,35 @@
                                         <td>{{ $object->npd }}</td>
                                         <td>
                                             @if ($object->state === '0')
-                                                Неудовлетворительное
+                                                {{ trans('okn.unsatisfactory') }}
                                             @else
-                                                Удовлетворительное
+                                                {{ trans('okn.satisfactory') }}
                                             @endif
                                         </td>
                                         <td>
                                             @if ($object->status === '0')
-                                                Выявлен
+                                                {{ trans('okn.revealed') }}
                                             @else
-                                                Зарегистрирован
+                                                {{ trans('okn.registered') }}
                                             @endif
                                         </td>
                                         <td>{{ $object->comment }}</td>
                                         <td>
                                             @if (!empty($object->file))
-                                                <a href="{{ '/files/' . $object->file }}">Скачать</a>
+                                                <a href="{{ '/files/' . $object->file }}">{{ trans('basic.download') }}</a>
                                             @endif
                                         </td>
                                         <td>
                                             <a
                                                 href="object/{{ $object->id}}/edit"
-                                                title="Редактировать">
+                                                title="{{ trans('basic.edit') }}">
                                                 <img src="/images/pencil.svg" width="15px">
                                             </a>
                                             <span
                                                 style="cursor: pointer"
-                                                title="Удалить"
+                                                title="{{ trans('basic.delete') }}"
                                                 v-on:click="deleteObject({{ $object->id }})"
-                                                onclick="return confirm('Удалить объект ОКН?');">
+                                                onclick="return confirm('{{ trans('okn.delete') }}');">
                                                 <img src="/images/garbage.svg" width="15px">
                                             </span>
                                         </td>

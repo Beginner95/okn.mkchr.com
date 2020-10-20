@@ -23,5 +23,7 @@ return [
     'add_new_file' => 'Приложить новый файл',
     'download' => 'Скачать',
     'delete_file' => 'Удалить файл',
-    'supported_formats' => 'Поддерживаемые форматы файлов jpg, pdf, zip'
+    'supported_formats' => 'Поддерживаемые форматы файлов jpg, pdf, zip',
+
+    'plus_icon' => '+',
 ];
