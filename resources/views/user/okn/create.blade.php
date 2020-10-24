@@ -9,7 +9,7 @@
                         {{ trans('okn.add') }}
                     </div>
                     <div class="card-body">
-                        <form action="/object" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('okn.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <div class="row">
