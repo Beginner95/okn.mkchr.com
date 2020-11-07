@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
-use App\User;
+use Faker\Factory;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
@@ -34,7 +34,7 @@ class RegisterTest extends TestCase
 
     public function testSuccess(): void
     {
-        $user = factory(User::class)->make();
+        $user = Factory::create();
 
         $response = $this->post('/register', [
             'name' => $user->name,
