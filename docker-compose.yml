@@ -22,7 +22,7 @@ services:
       PHP_IDE_CONFIG: "serverName=Docker"
     depends_on:
       - db
-  
+
   db:
     image: mysql:5.7
     ports:
@@ -30,24 +30,13 @@ services:
     restart: always
 
     volumes:
-      - ./storage/docker/mysql:/var/lib/mysql 
+      - ./storage/docker/mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: okn_2020
       MYSQL_DATABASE: okn_2020
       MYSQL_USER: okn_2020
       MYSQL_PASSWORD: okn_2020
 
-  phpmyadmin:
-    depends_on:
-      - db
-    image: phpmyadmin/phpmyadmin
-    restart: always
-    ports:
-      - 8081:80
-    environment:
-      PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: myUserPass
-  
   node:
     build:
       context: .
